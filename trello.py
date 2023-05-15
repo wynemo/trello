@@ -59,7 +59,7 @@ for attachment in attachments:
         response = requests.get(attachment_url,
                                stream = True,
                                timeout = ATTACHMENT_REQUEST_TIMEOUT,
-                               headers = {"Authorization":"OAuth oauth_consumer_key=\{}\",oauth_token=\"{}\"".format(key,token)})
+                               headers = {"Authorization":"OAuth oauth_consumer_key=\"{}\",oauth_token=\"{}\"".format(key,token)})
     except Exception:
         sys.stderr.write('Failed download: {}'.format(filename))
         continue
