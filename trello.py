@@ -7,7 +7,6 @@ import hashlib
 import re
 import sys
 ATTACHMENT_REQUEST_TIMEOUT = 30  # 30 seconds
-from urllib import  parse
 # Read the API keys from the environment variables
 key = os.getenv('TRELLO_API_KEY', '')
 token = os.getenv('TRELLO_TOKEN', '')
