@@ -33,7 +33,7 @@ def decode_if_url_encoded(string):
     try:
         decoded = unquote(string)
         return decoded
-    except:
+    except Exception:
         return string
 
 
@@ -45,7 +45,7 @@ card_name = card_data["name"]
 
 attachments = card_data["attachments"]
 
-for attachment in attachments:
+for i, attachment in enumerate(attachments):
     attachment_url = attachment["url"]
     attachment_id = attachment["id"]
     filename = decode_if_url_encoded(attachment_url.split("/")[-1])
@@ -69,6 +69,7 @@ for attachment in attachments:
 
     filepath = os.path.join(folder_name, filename)
     md_content = md_content.replace(attachment_url, filepath)
+    md_content += f"\n attachment_{i}:{attachment_url}"
 
     with open(filepath, "wb") as f:
         f.write(response.content)
